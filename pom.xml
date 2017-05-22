@@ -14,7 +14,6 @@
   </parent>
 
   <properties>
-    <docker.image.registry>docker.io</docker.image.registry>
     <docker.image.prefix>demogpb</docker.image.prefix>
     <docker.image.group>dcloudemo</docker.image.group>
     <docker.image.version>latest</docker.image.version>
@@ -25,16 +24,6 @@
     <module>customer</module>
     <module>order</module>
   </modules>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.webjars</groupId>
-        <artifactId>bootstrap</artifactId>
-        <version>3.3.6</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 
   <dependencies>
     <dependency>
@@ -112,6 +101,7 @@
     <dependency>
       <groupId>org.webjars</groupId>
       <artifactId>bootstrap</artifactId>
+      <version>3.3.6</version>
     </dependency>
   </dependencies>
 </project>

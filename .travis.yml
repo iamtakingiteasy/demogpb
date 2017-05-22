@@ -1,0 +1,13 @@
+sudo: required
+
+language: java
+
+services:
+  - docker
+
+script:
+  - mvn test -B test
+
+after_success:
+  - mvn -s .travis.settings.xml -B package -Pdocker_deploy
+
