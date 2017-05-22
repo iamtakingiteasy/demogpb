@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  customer:
+    image: dcloudemo/demogpb-customer
+    container_name: demogpb-customer
+    networks:
+      - platform
+  catalog:
+    image: dcloudemo/demogpb-catalog
+    container_name: demogpb-catalog
+    networks:
+      - platform
+  order:
+    image: dcloudemo/demogpb-order
+    container_name: demogpb-order
+    networks:
+      - platform
+
+networks:
+  platform:
+    driver: overlay
