@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: catalog
+
+  cloud:
+    config:
+      enabled: false
+      uri:
+      #profile: production
+      #label: master
+      discovery:
+              enabled: true
+              service-id: config-service

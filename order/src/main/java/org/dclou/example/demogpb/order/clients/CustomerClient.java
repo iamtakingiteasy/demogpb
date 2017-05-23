@@ -41,9 +41,10 @@ public class CustomerClient {
 	public CustomerClient(
 			@Value("${customer.service.host:customer}") String customerServiceHost,
 			@Value("${customer.service.port:8080}") long customerServicePort,
-			@Value("${ribbon.eureka.enabled:false}") boolean useRibbon) {
+			@Value("${ribbon.eureka.enabled:false}") boolean useRibbon,
+			RestTemplate restTemplate) {
 		super();
-		this.restTemplate = getRestTemplate();
+		this.restTemplate = restTemplate;
 		this.customerServiceHost = customerServiceHost;
 		this.customerServicePort = customerServicePort;
 		this.useRibbon = useRibbon;
@@ -68,18 +69,8 @@ public class CustomerClient {
 		}
 	}
 
-	protected RestTemplate getRestTemplate() {
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
-				false);
-		mapper.registerModule(new Jackson2HalModule());
-
-		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-		converter.setSupportedMediaTypes(Arrays.asList(MediaTypes.HAL_JSON));
-		converter.setObjectMapper(mapper);
-
-		return new RestTemplate(
-				Collections.<HttpMessageConverter<?>> singletonList(converter));
+	public RestTemplate getRestTemplate() {
+		return restTemplate;
 	}
 
 	public Collection<Customer> findAll() {
