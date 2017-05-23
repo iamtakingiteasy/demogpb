@@ -42,9 +42,9 @@ public class CatalogClient {
 	public CatalogClient(
 			@Value("${catalog.service.host:catalog}") String catalogServiceHost,
 			@Value("${catalog.service.port:8080}") long catalogServicePort,
-			@Value("${ribbon.eureka.enabled:false}") boolean useRibbon) {
+			@Value("${ribbon.eureka.enabled:false}") boolean useRibbon, RestTemplate restTemplate) {
 		super();
-		this.restTemplate = getRestTemplate();
+		this.restTemplate = restTemplate;
 		this.catalogServiceHost = catalogServiceHost;
 		this.catalogServicePort = catalogServicePort;
 		this.useRibbon = useRibbon;
@@ -55,19 +55,6 @@ public class CatalogClient {
 		this.loadBalancer = loadBalancer;
 	}
 
-	protected RestTemplate getRestTemplate() {
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
-				false);
-		mapper.registerModule(new Jackson2HalModule());
-
-		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-		converter.setSupportedMediaTypes(Arrays.asList(MediaTypes.HAL_JSON));
-		converter.setObjectMapper(mapper);
-
-		return new RestTemplate(
-				Collections.<HttpMessageConverter<?>> singletonList(converter));
-	}
 
 	@HystrixCommand(fallbackMethod = "priceCache", commandProperties = { @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2") })
 	public double price(long itemId) {

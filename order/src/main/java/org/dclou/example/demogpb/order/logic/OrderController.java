@@ -63,7 +63,7 @@ class OrderController {
 		return new ModelAndView("orderForm", "order", order);
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "order/{id}", method = RequestMethod.GET)
 	public ModelAndView get(@PathVariable("id") long id) {
 		return new ModelAndView("order", "order", orderRepository.findOne(id));
 	}
