@@ -4,7 +4,7 @@ spring:
 
   cloud:
     config:
-      enabled: false
+      enabled: true
       uri:
       #profile: production
       #label: master

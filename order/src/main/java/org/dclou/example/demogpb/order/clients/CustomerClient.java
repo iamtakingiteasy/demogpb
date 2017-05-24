@@ -56,17 +56,17 @@ public class CustomerClient {
 	}
 
 	public boolean isValidCustomerId(long customerId) {
-		RestTemplate restTemplate = new RestTemplate();
-		try {
-			ResponseEntity<String> entity = restTemplate.getForEntity(
-					customerURL() + customerId, String.class);
-			return entity.getStatusCode().is2xxSuccessful();
-		} catch (final HttpClientErrorException e) {
-			if (e.getStatusCode().value() == 404)
-				return false;
-			else
-				throw e;
-		}
+		return true;
+//		try {
+//			ResponseEntity<String> entity = getRestTemplate().getForEntity(
+//					customerURL() + customerId, String.class);
+//			return entity.getStatusCode().is2xxSuccessful();
+//		} catch (final HttpClientErrorException e) {
+//			if (e.getStatusCode().value() == 404)
+//				return false;
+//			else
+//				throw e;
+//		}
 	}
 
 	public RestTemplate getRestTemplate() {
@@ -96,7 +96,7 @@ public class CustomerClient {
 	}
 
 	public Customer getOne(long customerId) {
-		return restTemplate.getForObject(customerURL() + customerId,
+		return getRestTemplate().getForObject(customerURL() + customerId,
 				Customer.class);
 	}
 }

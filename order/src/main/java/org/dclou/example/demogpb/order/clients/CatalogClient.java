@@ -1,7 +1,5 @@
 package org.dclou.example.demogpb.order.clients;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.slf4j.Logger;
@@ -10,17 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
-import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.PagedResources;
-import org.springframework.hateoas.hal.Jackson2HalModule;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 
 @Component
 public class CatalogClient {
@@ -42,7 +34,8 @@ public class CatalogClient {
 	public CatalogClient(
 			@Value("${catalog.service.host:catalog}") String catalogServiceHost,
 			@Value("${catalog.service.port:8080}") long catalogServicePort,
-			@Value("${ribbon.eureka.enabled:false}") boolean useRibbon, RestTemplate restTemplate) {
+			@Value("${ribbon.eureka.enabled:false}") boolean useRibbon,
+			RestTemplate restTemplate) {
 		super();
 		this.restTemplate = restTemplate;
 		this.catalogServiceHost = catalogServiceHost;
@@ -56,7 +49,7 @@ public class CatalogClient {
 	}
 
 
-	@HystrixCommand(fallbackMethod = "priceCache", commandProperties = { @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2") })
+	//@HystrixCommand(fallbackMethod = "priceCache", commandProperties = {@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2")})
 	public double price(long itemId) {
 		return getOne(itemId).getPrice();
 	}
@@ -65,7 +58,7 @@ public class CatalogClient {
 		return getOneCache(itemId).getPrice();
 	}
 
-	@HystrixCommand(fallbackMethod = "getItemsCache", commandProperties = { @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2") })
+	//@HystrixCommand(fallbackMethod = "getItemsCache", commandProperties = {@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2")})
 	public Collection<Item> findAll() {
 		PagedResources<Item> pagedResources = restTemplate.getForObject(
 				catalogURL(), ItemPagedResources.class);
@@ -82,16 +75,16 @@ public class CatalogClient {
 		if (useRibbon) {
 			ServiceInstance instance = loadBalancer.choose("CATALOG");
 			url = "http://" + instance.getHost() + ":" + instance.getPort()
-					+ "/catalog/";
+			      + "/catalog/";
 		} else {
 			url = "http://" + catalogServiceHost + ":" + catalogServicePort
-					+ "/catalog/";
+			      + "/catalog/";
 		}
 		log.trace("Catalog: URL {} ", url);
 		return url;
 	}
 
-	@HystrixCommand(fallbackMethod = "getOneCache", commandProperties = { @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2") })
+	//@HystrixCommand(fallbackMethod = "getOneCache", commandProperties = {@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2")})
 	public Item getOne(long itemId) {
 		return restTemplate.getForObject(catalogURL() + itemId, Item.class);
 	}
