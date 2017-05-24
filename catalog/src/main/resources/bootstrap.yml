@@ -5,7 +5,6 @@ spring:
   cloud:
     config:
       enabled: true
-      uri:
       #profile: production
       #label: master
       discovery:

@@ -2,11 +2,8 @@ version: '3'
 
 services:
   demogpb-customer:
-    image: dcloudemo/demogpb-customer
+    image: dcloudemo/demogpb-customer:latest
   demogpb-catalog:
-    image: dcloudemo/demogpb-catalog
+    image: dcloudemo/demogpb-catalog:latest
   demogpb-order:
-    image: dcloudemo/demogpb-order
-    ports:
-      - "8083:8083"
-
+    image: dcloudemo/demogpb-order:latest
