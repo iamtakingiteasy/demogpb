@@ -5,9 +5,13 @@ spring:
   cloud:
     config:
       enabled: true
-      uri:
+#      uri:
       #profile: production
       #label: master
       discovery:
-              enabled: true
-              service-id: config-service
+        enabled: true
+        service-id: config-service
+      failFast: false
+      retry:
+        initialInterval: 3000
+        maxAttempts: 100
