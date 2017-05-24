@@ -5,6 +5,7 @@ spring:
   cloud:
     config:
       enabled: true
+      uri: http://config-service:8888
       #profile: production
       #label: master
 #      discovery:

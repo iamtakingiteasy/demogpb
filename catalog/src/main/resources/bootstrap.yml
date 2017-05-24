@@ -8,6 +8,3 @@ spring:
       uri: http://config-service:8888
       #profile: production
       #label: master
-#      discovery:
-#              enabled: true
-#              service-id: config-service
