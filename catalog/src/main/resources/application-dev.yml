@@ -1,4 +1,6 @@
-logging.level.org.dclou.example.demogpb.order.clients: TRACE
+logging:
+  level.org.dclou.example.demogpb: TRACE
+  level.org.springframework.security: TRACE
 spring:
   logging:
     pattern:
@@ -29,7 +31,7 @@ eureka:
 management.security.enabled: false
 
 server:
-  port: 8082
+  port: 8081
 
 ribbon:
   eureka:

@@ -7,8 +7,12 @@ spring:
       console: "%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]){yellow} %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
 
   sleuth:
-      sampler:
-        percentage: 1
+    sampler:
+      percentage: 1
+
+#  resources:
+#    chain:
+#      enabled: true
 
 encrypt:
   failOnError: false
@@ -37,10 +41,19 @@ management:
 
 server:
   port: 8083
+  contextPath: /
+  use-forward-headers: true
 
 ribbon:
   eureka:
     enabled: true
+
+zuul:
+  routes:
+    auth:
+      path: /auth/**
+      url: http://localhost:9991/auth/
+      sensitive-headers:
 
 #zuul:
 #  routes:
@@ -49,19 +62,21 @@ ribbon:
 #      sensitiveHeaders:
 
 security:
-  sessions: stateless
+  sessions: IF_REQUIRED
+  basic:
+    enabled: false
   user:
     password: none
   oauth2:
     client:
       client-id: web-app
-      client-secret: mySecretKey
-#      scope: read
-#      accessTokenUri: http://localhost:9080/auth-service/auth/oauth/token
-#      userAuthorizationUri: http://localhost:9080/auth-service/auth/oauth/authorize
-#      preEstablishedRedirectUri: http://localhost:8083/
-#      registeredRedirectUri: http://localhost:8083/
-#      useCurrentUri: false
+      #client-secret: mySecretKey
+      clientAuthenticationScheme: header
+      accessTokenUri: http://localhost:8083/auth/oauth/token
+      userAuthorizationUri: http://localhost:8083/auth/oauth/authorize
+      preEstablishedRedirectUri: http://localhost:8083/login
+      registeredRedirectUri: http://localhost:8083/login
+      useCurrentUri: false
 
     resource:
       jwt:

@@ -1,25 +1,28 @@
 package org.dclou.example.demogpb.customer;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
-import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 
 @Configuration
-public class SpringRestDataConfig extends RepositoryRestMvcConfiguration {
+public class SpringRestDataConfig extends RepositoryRestConfigurerAdapter {
 
 	@Override
-	protected void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
+	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
 		config.exposeIdsFor(Customer.class);
 	}
-
-	@Override
-	@Bean
-	@Primary
-	public ObjectMapper objectMapper() {
-		return super.objectMapper();
-	}
 }
+
+
+//	@Bean
+//	public RepositoryRestConfigurer repositoryRestConfigurer() {
+//
+//		return new RepositoryRestConfigurerAdapter() {
+//			@Override
+//			public void configureRepositoryRestConfiguration(
+//					RepositoryRestConfiguration config) {
+//				config.exposeIdsFor(Customer.class, Class2.class);
+//			}
+//		}
+//
+//	}
