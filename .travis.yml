@@ -10,5 +10,5 @@ script:
 
 after_success:
   - mkdir -p ~/.m2
-  - touch ~/.m2/settings-security.xml
+  - sh -c 'echo "<settingsSecurity><master>$(mvn -emp place)</master></settingsSecurity>" > ~/.m2/settings-security.xml'
   - mvn -s .travis.settings.xml -B package -DdeployDocker -DskipTests
