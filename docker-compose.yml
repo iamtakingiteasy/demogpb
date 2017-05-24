@@ -7,3 +7,6 @@ services:
     image: dcloudemo/demogpb-catalog
   demogpb-order:
     image: dcloudemo/demogpb-order
+    ports:
+      - "8083:8083"
+

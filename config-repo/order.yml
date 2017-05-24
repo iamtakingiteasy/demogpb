@@ -23,7 +23,7 @@ zuul:
   routes:
     auth:
       path: /auth/**
-      url: http://localhost:9991/auth
+      url: http://auth-service:9991/auth
       sensitive-headers:
 
 #zuul:
@@ -43,10 +43,10 @@ security:
       client-id: web-app
       #client-secret: mySecretKey
       clientAuthenticationScheme: header
-      accessTokenUri: http://localhost:8083/auth/oauth/token
-      userAuthorizationUri: http://localhost:8083/auth/oauth/authorize
-      preEstablishedRedirectUri: http://localhost:8083/login
-      registeredRedirectUri: http://localhost:8083/login
+      accessTokenUri: http://${spring.application.name}:${server.port}/auth/oauth/token
+      userAuthorizationUri: http://${spring.application.name}:${server.port}/auth/oauth/authorize
+      preEstablishedRedirectUri: http://${spring.application.name}:${server.port}/login
+      registeredRedirectUri: http://${spring.application.name}:${server.port}/login
       useCurrentUri: false
 
     resource:
