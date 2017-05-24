@@ -6,8 +6,8 @@ services:
   - docker
 
 script:
-  - mvn test -B test
+  - mvn test -B package -DskipTests
 
 after_success:
-  - mvn -s .travis.settings.xml -B package -Pdocker_deploy
+  - mvn -s .travis.settings.xml -B package -DdeployDocker -DskipTests
 
