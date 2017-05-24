@@ -10,4 +10,3 @@ script:
 
 after_success:
   - mvn -s .travis.settings.xml -B package -DdeployDocker -DskipTests
-
