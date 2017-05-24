@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: order
+
+  cloud:
+    config:
+      enabled: false
+      uri:
+      #profile: production
+      #label: master
+      discovery:
+              enabled: false
+              service-id: config-service

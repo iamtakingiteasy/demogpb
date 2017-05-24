@@ -14,6 +14,7 @@
 #            - X-Span-Name
 #            - X-Process-Id
 # sleuth async messaging
+spring:
   rabbitmq:
     addresses: rabbit-mon
     username: admin
