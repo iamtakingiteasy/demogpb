@@ -20,6 +20,12 @@ zuul:
     auth-service:
       path: /auth-service/**
       sensitiveHeaders:
+    admin-service:
+      path: /admin-service/**
+      sensitiveHeaders:
+    zipkin-service:
+      path: /zipkin-service/**
+      sensitiveHeaders:
   add-proxy-headers: true
 
 security:
