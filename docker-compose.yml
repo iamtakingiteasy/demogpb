@@ -1,5 +1,10 @@
 version: '3'
 
+#networks:
+#  default:
+#    external:
+#      name: platform_default
+      
 services:
   demogpb-customer:
     image: dcloudemo/demogpb-customer:latest
@@ -7,3 +12,5 @@ services:
     image: dcloudemo/demogpb-catalog:latest
   demogpb-order:
     image: dcloudemo/demogpb-order:latest
+    ports:
+      - "8083:8083"

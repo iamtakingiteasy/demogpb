@@ -1,4 +1,6 @@
 spring:
+  aop:
+    proxyTargetClass: true
   application:
     name: order
 
