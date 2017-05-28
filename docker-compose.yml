@@ -8,8 +8,10 @@ version: '3'
 services:
   demogpb-customer:
     image: dcloudemo/demogpb-customer:latest
+
   demogpb-catalog:
     image: dcloudemo/demogpb-catalog:latest
+
   demogpb-order:
     image: dcloudemo/demogpb-order:latest
     ports:
