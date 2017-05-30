@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    hostname: ${spring.application.name}
+    prefer-ip-address: false
 
 zuul:
   ignoredServices: '*'

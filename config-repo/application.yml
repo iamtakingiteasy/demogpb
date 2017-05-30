@@ -26,14 +26,12 @@ eureka:
     serviceUrl:
       defaultZone: http://discovery-service:8761/eureka/
   instance:
+      hostname: ${spring.application.name}
       prefer-ip-address: true
       lease-expiration-duration-in-seconds: 60
       lease-renewal-interval-in-seconds: 30
-
-      statusPageUrl: http://${eureka.instance.hostname}:${management.port}/${management.context-path}/info
-      secureHealthCheckUrl: http://${eureka.instance.hostname}:${management.port}/${management.context-path}/health
-      homePageUrl: http://${eureka.instance.hostname}:${server.port}/
-      securePort: ${server.port}
+      statusPageUrl: http://${eureka.instance.ip-address}:${management.port}/${management.context-path}/info
+      homePageUrl: http://${eureka.instance.ip-address}:${server.port}/
       securePortEnabled: false
       nonSecurePortEnabled: true
       metadataMap:

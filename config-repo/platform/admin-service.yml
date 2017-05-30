@@ -9,7 +9,7 @@ info:
 
 eureka:
   instance:
-    hostname: ${spring.application.name}
+    prefer-ip-address: false
 
 #management.context-path: /mgmt
 #endpoints.health.path: /health

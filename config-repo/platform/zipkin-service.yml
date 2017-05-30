@@ -33,10 +33,9 @@ zipkin:
   storage:
     type: mem #mysql #mem
 
-
 eureka:
   instance:
-    hostname: ${spring.application.name}
+    prefer-ip-address: false
 
 # Give the application a PORT default (ignored by PCF, will deploy on 80)
 server.port: 9411

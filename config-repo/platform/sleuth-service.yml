@@ -13,10 +13,9 @@ server:
 #        output:
 #          destination: ${kafka.destination}
 
-
 eureka:
   instance:
-    hostname: ${spring.application.name}
+    prefer-ip-address: false
 
 spring:
   cloud:

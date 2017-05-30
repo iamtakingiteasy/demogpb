@@ -2,7 +2,7 @@ server:
   port: 8761
 eureka:
   instance:
-    hostname: ${spring.application.name}
+    prefer-ip-address: false
   client:
     registerWithEureka: false
     fetchRegistry: false
