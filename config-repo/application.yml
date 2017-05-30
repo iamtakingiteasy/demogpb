@@ -49,6 +49,7 @@ management:
 security:
   basic:
     enabled: false
+  ignored: ${management.context-path},${management.context-path}/**
 
 hystrix:
   command:
