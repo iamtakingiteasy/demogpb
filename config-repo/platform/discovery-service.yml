@@ -1,4 +1,5 @@
 server:
+  context-path:
   port: 8761
 
 eureka:

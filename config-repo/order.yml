@@ -11,6 +11,7 @@ management:
 
 
 server:
+  context-path:
   port: 8083
   use-forward-headers: true
 

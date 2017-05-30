@@ -39,6 +39,7 @@ eureka:
 
 # Give the application a PORT default (ignored by PCF, will deploy on 80)
 server:
+  context-path:
   port: 9411
 
 
