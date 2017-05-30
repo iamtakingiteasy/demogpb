@@ -12,7 +12,6 @@ management:
 
 server:
   port: 8083
-  context-path: /
   use-forward-headers: true
 
 ribbon:
