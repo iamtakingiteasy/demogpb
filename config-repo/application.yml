@@ -31,7 +31,6 @@ eureka:
       lease-expiration-duration-in-seconds: 60
       lease-renewal-interval-in-seconds: 30
       statusPageUrl: http://${eureka.instance.ip-address}:${management.port}/${management.context-path}/info
-      health-check-url: http://${eureka.instance.ip-address}:${management.port}/${management.context-path}/health
       homePageUrl: http://${eureka.instance.ip-address}:${management.port}/
       securePortEnabled: false
       nonSecurePortEnabled: true
@@ -39,6 +38,8 @@ eureka:
         management.context-path: ${management.context-path}
         management.port: ${management.port}
         instanceId: ${spring.application.name}:${random.value}
+      secure-health-check-url: http://${eureka.instance.ip-address}:${management.port}/${management.context-path}/health
+      secure-port: ${server.port}
 
 management:
   port: ${server.port}
