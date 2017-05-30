@@ -7,6 +7,10 @@ info:
   version: 1.5.0
   owner: \u674E\u9F99
 
+eureka:
+  instance:
+    hostname: ${spring.application.name}
+
 #management.context-path: /mgmt
 #endpoints.health.path: /health
 
