@@ -31,7 +31,8 @@ eureka:
       lease-expiration-duration-in-seconds: 60
       lease-renewal-interval-in-seconds: 30
       statusPageUrl: http://${eureka.instance.ip-address}:${management.port}/${management.context-path}/info
-      homePageUrl: http://${eureka.instance.ip-address}:${server.port}/
+      health-check-url: http://${eureka.instance.ip-address}:${management.port}/${management.context-path}/health
+      homePageUrl: http://${eureka.instance.ip-address}:${management.port}/
       securePortEnabled: false
       nonSecurePortEnabled: true
       metadataMap:
