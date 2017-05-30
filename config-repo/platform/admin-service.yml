@@ -1,6 +1,7 @@
 # DOCS http://codecentric.github.io/spring-boot-admin/1.5.0/#_hystrix_ui_module
 
 server:
+context-path: /
   port: ${PORT:7070}
 
 info:

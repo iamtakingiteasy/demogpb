@@ -1,5 +1,7 @@
 server:
+  context-path: /
   port: 8761
+
 eureka:
   instance:
     prefer-ip-address: false

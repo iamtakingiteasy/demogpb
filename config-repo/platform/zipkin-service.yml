@@ -38,6 +38,8 @@ eureka:
     prefer-ip-address: false
 
 # Give the application a PORT default (ignored by PCF, will deploy on 80)
-server.port: 9411
+server:
+  context-path: /
+  port: 9411
 
 
