@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if command -v docker-machine &>/dev/null; then
   #docker-machine create -d virtualbox --virtualbox-cpu-count 4 --virtualbox-memory 7096 dclou || true
