@@ -6,7 +6,7 @@ server:
 
 info:
   version: 1.5.0
-  owner: \u674E\u9F99
+  owner: подсистема "Администрирование и менеджемнт"
 
 eureka:
   instance:
@@ -18,6 +18,7 @@ eureka:
 spring:
   boot:
     admin:
+      context-path: /admin
       routes:
         endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
 
