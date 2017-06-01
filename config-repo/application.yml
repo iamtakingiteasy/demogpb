@@ -15,6 +15,13 @@ spring:
     sampler:
       percentage: 1
 
+  # sleuth-zipkin async messaging
+  rabbitmq:
+    addresses: rabbit-mon
+    username: admin
+    password: admin
+    virtual-host: rabbit-mon
+
 encrypt:
   failOnError: false
 eureka:
