@@ -1,8 +1,3 @@
-spring:
- sleuth:
-	enabled: false
-	stream:
- 		enabled: false
 #  cloud:
 #    stream:
 #      kafka:
@@ -20,6 +15,10 @@ spring:
 #            - X-Process-Id
 # sleuth async messaging
 spring:
+  sleuth:
+    enabled: false
+    stream:
+      enabled: false
   rabbitmq:
     addresses: rabbit-mon
     username: admin
