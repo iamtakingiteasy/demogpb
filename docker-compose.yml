@@ -4,15 +4,21 @@ version: '3'
 #  default:
 #    external:
 #      name: platform_default
-      
+
 services:
   demogpb-customer:
     image: dcloudemo/demogpb-customer:latest
+    environment:
+      JAVA_OPTS: "-Xms250m -Xmx512m -XX:CompressedClassSpaceSize=300m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:-TieredCompilation -Xss256k -XX:+UseG1GC -XX:+UseStringDeduplication"
 
   demogpb-catalog:
     image: dcloudemo/demogpb-catalog:latest
+    environment:
+      JAVA_OPTS: "-Xms250m -Xmx512m -XX:CompressedClassSpaceSize=300m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:-TieredCompilation -Xss256k -XX:+UseG1GC -XX:+UseStringDeduplication"
 
   demogpb-order:
     image: dcloudemo/demogpb-order:latest
+    environment:
+      JAVA_OPTS: "-Xms250m -Xmx512m -XX:CompressedClassSpaceSize=300m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:-TieredCompilation -Xss256k -XX:+UseG1GC -XX:+UseStringDeduplication"
     ports:
       - "8083:8083"
