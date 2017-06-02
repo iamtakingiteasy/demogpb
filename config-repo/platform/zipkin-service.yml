@@ -1,3 +1,8 @@
+spring:
+ sleuth:
+	enabled: false
+	stream:
+ 		enabled: false
 #  cloud:
 #    stream:
 #      kafka:
