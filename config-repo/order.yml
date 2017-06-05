@@ -1,7 +1,6 @@
 info:
-  version: @project.version@
-  owner: Тест
-  component: Order Service [ui]
+  version: 1.0.0
+  component: микросервис "Управление заказами"
   
 spring:
   data:

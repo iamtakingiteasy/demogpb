@@ -6,7 +6,7 @@ server:
 
 info:
   version: 1.5.0
-  owner: подсистема "Администрирование и менеджемнт"
+  description: подсистема "Администрирования и управления"
 
 eureka:
   instance:
