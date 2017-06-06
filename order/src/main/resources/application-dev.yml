@@ -42,7 +42,7 @@ server:
 
 ribbon:
   eureka:
-    enabled: true
+    enabled: false
 
 oauth2settings:
   client:
