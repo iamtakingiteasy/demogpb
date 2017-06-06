@@ -17,6 +17,7 @@ import java.util.Collection;
 
 
 @Controller
+@Api("Order")
 class OrderController {
 
 	private OrderRepository orderRepository;
