@@ -7,19 +7,19 @@ version: '3'
 
 services:
   demogpb-customer:
-    image: dcloudemo/demogpb-customer:latest
+    image: customer:latest
     environment:
       JAVA_MEM: "-Xms250m -Xmx512m -XX:CompressedClassSpaceSize=300m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:-TieredCompilation -Xss256k -XX:+UseG1GC -XX:+UseStringDeduplication"
       JAVA_EXT: "-Djava.security.egd=file:/dev/./urandom"
 
   demogpb-catalog:
-    image: dcloudemo/demogpb-catalog:latest
+    image: catalog:latest
     environment:
       JAVA_MEM: "-Xms250m -Xmx512m -XX:CompressedClassSpaceSize=300m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:-TieredCompilation -Xss256k -XX:+UseG1GC -XX:+UseStringDeduplication"
       JAVA_EXT: "-Djava.security.egd=file:/dev/./urandom"
 
   demogpb-order:
-    image: dcloudemo/demogpb-order:latest
+    image: order:latest
     environment:
       JAVA_MEM: "-Xms250m -Xmx512m -XX:CompressedClassSpaceSize=300m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:-TieredCompilation -Xss256k -XX:+UseG1GC -XX:+UseStringDeduplication"
       JAVA_EXT: "-Djava.security.egd=file:/dev/./urandom"

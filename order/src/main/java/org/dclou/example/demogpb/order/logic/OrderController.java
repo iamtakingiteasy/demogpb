@@ -19,9 +19,7 @@ import java.util.Collection;
 class OrderController {
 
 	private OrderRepository orderRepository;
-
 	private OrderService orderService;
-
 	private CustomerClient customerClient;
 	private CatalogClient catalogClient;
 
@@ -29,7 +27,6 @@ class OrderController {
 	private OrderController(OrderService orderService,
 			OrderRepository orderRepository, CustomerClient customerClient,
 			CatalogClient catalogClient) {
-		super();
 		this.orderRepository = orderRepository;
 		this.customerClient = customerClient;
 		this.catalogClient = catalogClient;
