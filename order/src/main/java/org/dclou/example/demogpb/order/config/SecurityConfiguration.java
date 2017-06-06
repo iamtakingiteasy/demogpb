@@ -132,27 +132,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.antMatcher("/**").authorizeRequests()
 				.antMatchers( "/login**","/logout**", "/auth-service/**", "/auth/**", "/webjars/**",
-                        "/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security",
-                        "/swagger-resources/configuration/ui",
-                        "/swagger-resources/configuration/security",
-                        "/swagger-ui.html", "/swagger**").permitAll()
+                        "/documentation//v2/api-docs", "/documentation//configuration/ui",
+                        "/documentation//swagger-resources", "/documentation//configuration/security",
+                        "/documentation//swagger-resources/configuration/ui",
+                        "/documentation//swagger-resources/configuration/security",
+                        "/documentation//swagger-ui.html", "/documentation//swagger**",
+                        "/documentation//webjars/**").permitAll()
                         .anyRequest().authenticated();
-    }
-
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-    	registry.addRedirectViewController("/documentation/v2/api-docs", "/v2/api-docs");
-        registry.addRedirectViewController("/documentation/configuration/ui", "/configuration/ui");
-        registry.addRedirectViewController("/documentation/configuration/security", "/configuration/security");
-        registry.addRedirectViewController("/documentation/swagger-resources", "/swagger-resources");
-        registry.addRedirectViewController("/documentation", "/documentation/swagger-ui.html");
-        registry.addRedirectViewController("/documentation/", "/documentation/swagger-ui.html");
-
-    }
-
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/documentation/**").addResourceLocations("classpath:/META-INF/resources/");
     }
 
     private OAuth2AuthenticationProcessingFilter oAuth2AuthenticationProcessingFilter() {
