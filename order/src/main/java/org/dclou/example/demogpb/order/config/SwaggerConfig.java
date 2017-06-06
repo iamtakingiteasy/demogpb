@@ -1,4 +1,4 @@
-package org.dclou.example.demogpb.order;
+package org.dclou.example.demogpb.order.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
