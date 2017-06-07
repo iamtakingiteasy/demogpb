@@ -24,6 +24,8 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/documentation/**").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/swagger-resources/**").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/swagger*").addResourceLocations("classpath:/META-INF/resources/");
     }
 
 }
