@@ -16,16 +16,17 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
         registry.addRedirectViewController("/documentation/configuration/ui", "/configuration/ui");
         registry.addRedirectViewController("/documentation/configuration/security", "/configuration/security");
         registry.addRedirectViewController("/documentation/swagger-resources", "/swagger-resources");
+        registry.addRedirectViewController("/documentation/swagger-resources/configuration/ui", "/swagger-resources/configuration/ui");
+        registry.addRedirectViewController("/documentation/swagger-resources/configuration/security", "/swagger-resources/configuration/security");
         registry.addRedirectViewController("/documentation", "/documentation/swagger-ui.html");
         registry.addRedirectViewController("/documentation/", "/documentation/swagger-ui.html");
-
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/documentation/**").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/swagger-resources/**").addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/swagger*").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
     }
 
 }
