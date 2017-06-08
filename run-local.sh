@@ -12,7 +12,7 @@ if command -v docker-machine &>/dev/null; then
   fi
 fi
 
-docker stack deploy -c docker-compose-dev.yml dclou
+docker stack deploy -c docker-compose-local.yml dclou
 # List all images
 docker stack ps dclou
 #Overall service info
