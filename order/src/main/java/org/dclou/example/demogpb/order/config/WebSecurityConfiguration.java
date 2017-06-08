@@ -50,7 +50,16 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .and()
             .antMatcher("/**")
             .authorizeRequests()
-            .antMatchers("/", "/login**", "/webjars/**").permitAll()
+            .antMatchers( "/login**", "/logout**", "/auth-service/**", "/auth/**", "/webjars/**",
+                "/v2/api-docs", "/favicon.ico", "/configuration/ui", "/swagger-resources",
+			    "/configuration/security", "/swagger-resources/configuration/ui",
+                "/swagger-resources/configuration/security", "/swagger-ui.html",
+                "/documentation/v2/api-docs", "/documentation/configuration/ui",
+                "/documentation/swagger-resources", "/documentation/configuration/security",
+                "/documentation/swagger-resources/configuration/ui",
+                "/documentation/swagger-resources/configuration/security",
+                "/documentation/swagger-ui.html", "/documentation/swagger*", "/documentation/webjars/**", "/mgmt/**")
+            .permitAll()
             .anyRequest().authenticated();
         // @formatter:on
     }

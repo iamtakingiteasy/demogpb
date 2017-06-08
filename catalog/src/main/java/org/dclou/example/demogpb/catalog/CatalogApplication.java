@@ -3,10 +3,14 @@ package org.dclou.example.demogpb.catalog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 
 import javax.annotation.PostConstruct;
 
+@EnableHystrixDashboard
 @SpringCloudApplication
+@EnableFeignClients
 public class CatalogApplication {
 
 	private final ItemRepository itemRepository;

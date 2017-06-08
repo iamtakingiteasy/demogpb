@@ -3,9 +3,11 @@ package org.dclou.example.demogpb.customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 
 import javax.annotation.PostConstruct;
 
+@EnableHystrixDashboard
 @SpringCloudApplication
 public class CustomerApplication {
 
