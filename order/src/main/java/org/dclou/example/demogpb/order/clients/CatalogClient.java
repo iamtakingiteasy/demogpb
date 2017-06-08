@@ -36,7 +36,6 @@ public class CatalogClient {
 			@Value("${catalog.service.port:8080}") long catalogServicePort,
 			@Value("${ribbon.eureka.enabled:false}") boolean useRibbon,
 			RestTemplate restTemplate) {
-		super();
 		this.restTemplate = restTemplate;
 		this.catalogServiceHost = catalogServiceHost;
 		this.catalogServicePort = catalogServicePort;
@@ -75,10 +74,10 @@ public class CatalogClient {
 		ServiceInstance instance = loadBalancer.choose("CATALOG");
 		if (useRibbon  && instance != null) {
 			url = "http://" + instance.getHost() + ":" + instance.getPort()
-			      + "/catalog/";
+			      + "/api/catalog/";
 		} else {
 			url = "http://" + catalogServiceHost + ":" + catalogServicePort
-			      + "/catalog/";
+			      + "/api/catalog/";
 		}
 		log.trace("Catalog: URL {} ", url);
 		return url;
