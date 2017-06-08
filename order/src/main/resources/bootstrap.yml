@@ -5,12 +5,11 @@ spring:
     name: order
   profiles:
     active: dev
-
-#  cloud:
-#    config:
-#      enabled: true
-#      uri: http://config-service:8888
-#      failFast: false
-#      retry:
-#        initialInterval: 3000
-#        maxAttempts: 100
+  cloud:
+    config:
+      enabled: false
+      uri: http://config-service:8888
+      failFast: false
+      retry:
+        initialInterval: 3000
+        maxAttempts: 100

@@ -1,6 +1,7 @@
 logging:
-  level.org.dclou.example.demogpb.order.clients: DEBUG
-  level.org.springframework.security: DEBUG
+  level:
+    org.dclou.example.demogpb: TRACE
+    org.springframework.security: DEBUG
 
 spring:
   logging:
@@ -9,6 +10,21 @@ spring:
   sleuth:
     sampler:
       percentage: 1
+  rabbitmq:
+    addresses: rabbit-mon
+    username: admin
+    password: admin
+    virtual-host: rabbit-mon
+  data:
+    rest:
+      basePath: /api
+  cloud:
+    inetutils:
+      preferred-networks:
+        - 10.0
+      ignored-interfaces:
+        - eth2
+        - eth2@*
 
 encrypt:
   failOnError: false
@@ -42,7 +58,7 @@ server:
 
 ribbon:
   eureka:
-    enabled: false
+    enabled: true
 
 oauth2settings:
   client:
@@ -51,11 +67,16 @@ oauth2settings:
     clientSecret: 123456
     authenticationScheme: query
     clientAuthenticationScheme: header
-    accessTokenUri: http://dripka.com:9991/oauth/token
+    accessTokenUri: http://auth-service:9991/oauth/token
     userAuthorizationUri: http://dripka.com:9991/oauth/authorize
     preEstablishedRedirectUri: http://dripka.com:8083/login/order
     registeredRedirectUri: http://dripka.com:8083/login/order
     useCurrentUri: false
   resource:
-    userInfoUri: http://dripka.com:9991/api/user/principal.json
+    userInfoUri: http://auth-service:9991/api/user/principal.json
     preferTokenInfo: true
+
+security:
+  sessions: always
+  user:
+    password: password

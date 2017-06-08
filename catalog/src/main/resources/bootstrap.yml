@@ -1,10 +1,16 @@
 spring:
+  aop:
+    proxyTargetClass: true
   application:
     name: catalog
+  profiles:
+    active: dev
 
   cloud:
     config:
-      enabled: true
+      enabled: false
       uri: http://config-service:8888
-      #profile: production
-      #label: master
+      failFast: false
+      retry:
+        initialInterval: 3000
+        maxAttempts: 100

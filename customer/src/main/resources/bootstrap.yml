@@ -1,16 +1,15 @@
 spring:
+  aop:
+    proxyTargetClass: true
   application:
     name: customer
+  profiles:
+    active: dev
 
   cloud:
     config:
-      enabled: true
+      enabled: false
       uri: http://config-service:8888
-      #profile: production
-      #label: master
-#      discovery:
-#        enabled: true
-#        service-id: config-service
       failFast: false
       retry:
         initialInterval: 3000

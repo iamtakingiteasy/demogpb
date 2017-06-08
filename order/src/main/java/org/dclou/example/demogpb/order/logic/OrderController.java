@@ -77,5 +77,4 @@ class OrderController {
 
 		return new ModelAndView("redirect:/");
 	}
-
 }
