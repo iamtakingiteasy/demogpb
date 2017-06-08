@@ -17,7 +17,7 @@ import java.util.Collection;
 
 
 @Controller
-@Api("Order")
+@Api(value = "Order")
 class OrderController {
 
 	private OrderRepository orderRepository;
@@ -49,7 +49,7 @@ class OrderController {
 	}
 
 	@RequestMapping("/")
-	@ApiOperation(value = "orderList", nickname = "orderList", response = Order.class, responseContainer = "List")
+	@ApiOperation(value = "/", nickname = "orderList", response = Order.class, responseContainer = "List")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Success", response = String.class),
 			@ApiResponse(code = 401, message = "Unauthorized"),
@@ -62,7 +62,7 @@ class OrderController {
 	}
 
 	@RequestMapping(value = "/form", method = RequestMethod.GET)
-	@ApiOperation(value = "form", nickname = "form", response = Order.class)
+	@ApiOperation(value = "/form", nickname = "form", response = Order.class)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Success", response = String.class),
 			@ApiResponse(code = 401, message = "Unauthorized"),
@@ -74,7 +74,10 @@ class OrderController {
 	}
 
 	@RequestMapping(value = "/line", method = RequestMethod.POST)
-	@ApiOperation(value = "line", nickname = "line", response = Order.class)
+	@ApiOperation(value = "/line", nickname = "line", response = Order.class)
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "order", value = "Order object", required = true, dataType = "Order", paramType = "query")
+	})
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Success", response = String.class),
 			@ApiResponse(code = 401, message = "Unauthorized"),
@@ -88,27 +91,27 @@ class OrderController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ApiOperation(value = "/{id}", nickname = "/", response = Order.class)
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "id", value = "Order's id", required = true, dataType = "long", paramType = "query", defaultValue="0")
+	})
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Success", response = String.class),
 			@ApiResponse(code = 401, message = "Unauthorized"),
 			@ApiResponse(code = 403, message = "Forbidden"),
 			@ApiResponse(code = 404, message = "Not Found"),
 			@ApiResponse(code = 500, message = "Failure")})
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "id", value = "Order's id", required = true, dataType = "long", paramType = "query", defaultValue="0")
-	})
 	public ModelAndView get(@PathVariable("id") long id) {
 		return new ModelAndView("order", "order", orderRepository.findOne(id));
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public ModelAndView post(Order order) {
-		order = orderService.order(order);
+		//order = orderService.order(order);
 		return  new ModelAndView("redirect:/");
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	@ApiOperation(value = "post", nickname = "post")
+	@ApiOperation(value = "/{id}", nickname = "deleteOrder")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Success", response = String.class),
 			@ApiResponse(code = 401, message = "Unauthorized"),
