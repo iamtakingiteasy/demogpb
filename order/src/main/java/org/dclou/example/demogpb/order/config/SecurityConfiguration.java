@@ -150,8 +150,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			"/documentation/swagger*",
                         "/documentation/webjars/**"
 			).permitAll()
-                        .anyRequest().authenticated();
+                        .anyRequest().authenticated()
+                        .antMatchers("/mgmt/**").permitAll();
     }
+
 
     private OAuth2AuthenticationProcessingFilter oAuth2AuthenticationProcessingFilter() {
         OAuth2AuthenticationProcessingFilter oAuth2AuthenticationProcessingFilter =

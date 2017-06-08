@@ -3,9 +3,11 @@ package org.dclou.example.demogpb.order;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
+@EnableHystrixDashboard
 @EnableCircuitBreaker
 @SpringCloudApplication
 @EnableZuulProxy
