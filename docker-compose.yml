@@ -1,8 +1,9 @@
 version: '3'
 
-networks:
-  dnet:
-    driver: bridge
+#networks:
+#  default:
+#    external:
+#      name: platform_default
 
 services:
   demogpb-customer:
@@ -10,16 +11,12 @@ services:
     environment:
       JAVA_MEM: "-Xms250m -Xmx512m -XX:CompressedClassSpaceSize=300m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:-TieredCompilation -Xss256k -XX:+UseG1GC -XX:+UseStringDeduplication"
       JAVA_EXT: "-Djava.security.egd=file:/dev/./urandom"
-    networks:
-      - dnet
 
   demogpb-catalog:
     image: dcloudemo/demogpb-catalog:latest
     environment:
       JAVA_MEM: "-Xms250m -Xmx512m -XX:CompressedClassSpaceSize=300m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:-TieredCompilation -Xss256k -XX:+UseG1GC -XX:+UseStringDeduplication"
       JAVA_EXT: "-Djava.security.egd=file:/dev/./urandom"
-    networks:
-      - dnet
 
   demogpb-order:
     image: dcloudemo/demogpb-order:latest
@@ -28,5 +25,3 @@ services:
       JAVA_EXT: "-Djava.security.egd=file:/dev/./urandom"
     ports:
       - "8083:8083"
-    networks:
-      - dnet
