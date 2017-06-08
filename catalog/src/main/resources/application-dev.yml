@@ -1,7 +1,6 @@
 logging:
-  level:
-    org.dclou.example.demogpb: TRACE
-    org.springframework.security: DEBUG
+  level.org.dclou.example.demogpb: TRACE
+  level.org.springframework.security: DEBUG
 
 spring:
   logging:
@@ -51,7 +50,7 @@ management:
     include: request_headers,response_headers,cookies,authorization_header,errors,path_info,path_translated,context_path,user_principal,parameters,query_string,auth_type,remote_address,session_id,remote_user
 
 server:
-  port: 8083
+  port: 8081
   session:
     cookie:
       name: JSESSIONIDCATALOGSRV

@@ -3,12 +3,9 @@ spring:
     proxyTargetClass: true
   application:
     name: customer
-  profiles:
-    active: dev
-
   cloud:
     config:
-      enabled: false
+      enabled: true
       uri: http://config-service:8888
       failFast: false
       retry:

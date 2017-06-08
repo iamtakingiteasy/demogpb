@@ -1,7 +1,6 @@
 logging:
-  level:
-    org.dclou.example.demogpb: TRACE
-    org.springframework.security: DEBUG
+  level.org.dclou.example.demogpb: TRACE
+  level.org.springframework.security: DEBUG
 
 spring:
   logging:
