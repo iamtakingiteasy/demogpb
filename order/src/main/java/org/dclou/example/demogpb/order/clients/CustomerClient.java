@@ -81,8 +81,8 @@ public class CustomerClient {
 
 	private String customerURL() {
 		String url;
+		ServiceInstance instance = loadBalancer.choose("CUSTOMER");
 		if (useRibbon) {
-			ServiceInstance instance = loadBalancer.choose("CUSTOMER");
 			url = "http://" + instance.getHost() + ":" + instance.getPort()
 					+ "/customer/";
 

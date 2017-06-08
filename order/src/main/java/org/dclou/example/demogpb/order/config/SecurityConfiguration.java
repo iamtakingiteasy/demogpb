@@ -131,13 +131,27 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 
 		http.antMatcher("/**").authorizeRequests()
-				.antMatchers( "/login**","/logout**", "/auth-service/**", "/auth/**", "/webjars/**").permitAll()
-				.anyRequest().authenticated();
-
-
-
+				.antMatchers( "/login**","/logout**", "/auth-service/**", "/auth/**", "/webjars/**",
+                        "/v2/api-docs",
+                        "/favicon.ico",
+			"/configuration/ui",
+                        "/swagger-resources",
+			"/configuration/security",
+                        "/swagger-resources/configuration/ui",
+                        "/swagger-resources/configuration/security",
+                        "/swagger-ui.html",
+                        "/documentation/v2/api-docs",
+			"/documentation/configuration/ui",
+                        "/documentation/swagger-resources",
+			"/documentation/configuration/security",
+                        "/documentation/swagger-resources/configuration/ui",
+                        "/documentation/swagger-resources/configuration/security",
+                        "/documentation/swagger-ui.html",
+			"/documentation/swagger*",
+                        "/documentation/webjars/**"
+			).permitAll()
+                        .anyRequest().authenticated();
     }
-
 
     private OAuth2AuthenticationProcessingFilter oAuth2AuthenticationProcessingFilter() {
         OAuth2AuthenticationProcessingFilter oAuth2AuthenticationProcessingFilter =
