@@ -42,7 +42,8 @@ public class CatalogApp {
 		public void configure(HttpSecurity http) throws Exception {
 			http.csrf().disable()
 					.authorizeRequests()
-					.antMatchers("/**").hasAuthority("ROLE_READER");
+					.antMatchers("/**").hasAuthority("ROLE_READER")
+					.antMatchers("/mgmt/**").permitAll();
 		}
 
 	}
