@@ -103,7 +103,7 @@ class OrderController {
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public ModelAndView post(Order order) {
-		//order = orderService.order(order);
+		order = orderService.order(order);
 		return  new ModelAndView("redirect:/");
 	}
 
