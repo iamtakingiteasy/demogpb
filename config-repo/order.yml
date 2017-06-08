@@ -1,3 +1,7 @@
+info:
+  version: 1.0.0
+  component: микросервис "Управление заказами"
+  
 spring:
   data:
     rest:
@@ -21,6 +25,24 @@ server:
   use-forward-headers: true
 
 ribbon:
+   # Interval to refresh the server list from the source
+  serverListRefreshInterval: 1000
+
+  # Max number of retries on the same server (excluding the first try)
+  maxAutoRetries: 1
+
+  # Max number of next servers to retry (excluding the first server)
+  maxAutoRetriesNextServer: 1
+
+  # Interval to refresh the server list from the source
+  ServerListRefreshInterval: 1000
+
+  # Max number of retries on the same server (excluding the first try)
+  MaxAutoRetries: 1
+
+  # Max number of next servers to retry (excluding the first server)
+  MaxAutoRetriesNextServer: 1
+  
   eureka:
     enabled: true
 

@@ -1,3 +1,7 @@
+info:
+  version: 1.0.0
+  component: микросервис "Управления клиентами"
+
 logging:
   level.org.dclou.example.demogpb: TRACE
   level.org.springframework.security: TRACE

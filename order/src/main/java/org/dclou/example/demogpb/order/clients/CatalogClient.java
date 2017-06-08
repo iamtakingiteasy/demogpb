@@ -71,8 +71,8 @@ public class CatalogClient {
 
 	private String catalogURL() {
 		String url;
-		if (useRibbon) {
-			ServiceInstance instance = loadBalancer.choose("CATALOG");
+		ServiceInstance instance = loadBalancer.choose("CATALOG");
+		if (useRibbon  && instance != null) {
 			url = "http://" + instance.getHost() + ":" + instance.getPort()
 			      + "/api/catalog/";
 		} else {
